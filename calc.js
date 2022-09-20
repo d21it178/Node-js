@@ -1,15 +1,24 @@
-var calculator = require('./calcModule'); 
+var http = require('http');
+
+http.createServer(function (req, res) {
     
-var x = 50, y = 10; 
+
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    var calculator = require('./calcModule'); 
     
-console.log("Addition of 50 and 10 is "
+    var x = 50, y = 10; 
+
+    
+    res.write(" Addition of 50 and 10 is "
                    + calculator.add(x, y)); 
     
-console.log("Subtraction of 50 and 10 is "
+                   res.write("\n Subtraction of 50 and 10 is "
                    + calculator.sub(x, y)); 
     
-console.log("Multiplication of 50 and 10 is "
+                   res.write("\n Multiplication of 50 and 10 is "
                    + calculator.mult(x, y)); 
     
-console.log("Division of 50 and 10 is " 
+                   res.end("\n Division of 50 and 10 is " 
                    + calculator.div(x, y)); 
+                   res.send();
+                }).listen(3002);
