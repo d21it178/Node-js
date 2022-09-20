@@ -17,7 +17,7 @@ exports.div = function (x, y) {
     return x / y; 
 };
 
-var calculator = require('./calcModule'); 
+var calculator = require('./Calculator'); 
 var x = 50, y = 10; 
 console.log("Addition of 50 and 10 is "
                    + calculator.add(x, y)); 
