@@ -17,16 +17,27 @@ exports.div = function (x, y) {
     return x / y; 
 };
 
-var calculator = require('./Calculator'); 
-var x = 50, y = 10; 
-console.log("Addition of 50 and 10 is "
+var http = require('http');
+
+http.createServer(function (req, res) {
+    
+
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    var calculator = require('./Calculator'); 
+    
+    var x = 50, y = 10; 
+
+    
+    res.write(" Addition of 50 and 10 is "
                    + calculator.add(x, y)); 
     
-console.log("Subtraction of 50 and 10 is "
+                   res.write("\n Subtraction of 50 and 10 is "
                    + calculator.sub(x, y)); 
     
-console.log("Multiplication of 50 and 10 is "
+                   res.write("\n Multiplication of 50 and 10 is "
                    + calculator.mult(x, y)); 
     
-console.log("Division of 50 and 10 is " 
+                   res.end("\n Division of 50 and 10 is " 
                    + calculator.div(x, y)); 
+                   //res.send();
+                }).listen(3003);
